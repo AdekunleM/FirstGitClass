@@ -7,7 +7,7 @@ require('dotenv').config();
 const participantRouter = require('./routes/studentRoute');
 const app = express();
 app.use(express.json());
-app.use('/api/participant/', participantRouter)
+app.use('/api/v1/', participantRouter)
 
 const port = process.env.port 
 
