@@ -2,29 +2,54 @@ const mongoose = require('mongoose');
 // create a schema object from mongoose object
 const participantSchema = new mongoose.Schema(
     {
-      name: {
+      fullName: {
         type: String,
         required: true,
       },
       stack: {
         type: String,
+        enum: ['Frontend', 'Backend'],
+        required: true,
+      },
+      email:{
+        type: String,
+        unique: true,
+        required: true,
+      },
+      password:{
+        type: String,
         required: true,
       },
       score:{
         html:{
-            type: String,
-            required: true,
+            type: Number,
+            
         },
         css:{
-            type: String,
-            required: true,
+            type: Number,
+            
         },
-        javascript:{
-            type: String,
-            required: true,
+        javaScript:{
+            type: Number,
+            
+        },
+        node:{
+          type: Number,
         }
-        
-      }
+      },
+      role:{
+        type: String,
+        enum: ['Teacher', 'Student'],
+        required: true,
+      },
+      isAdmin:{
+        type: Boolean,
+        // default : false,
+      },
+      blacklist:{
+        type: Array,
+        default:[]
+      },
     },
     { timestamps: true }
   );
